@@ -1,0 +1,20 @@
+<!-- Header -->
+<header id="header">
+    <a href="{{ path('index') }}" class="logo"><strong>Universidad</strong> Inter Rapidisimo</a>
+    <ul class="icons">
+        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>                
+        {% if app.session.get('profesor_session') is defined and app.session.get('profesor_session') == true %}
+            <li><a href="{{ path('cerrar_sesion') }}" class="icon brands fa-user-m"><span class="label">Medium</span>Cerrar Sesión Profesor</a></li>            
+        {% elseif app.session.get('estudiante_session') is defined and app.session.get('estudiante_session') == true %}
+            <li><a href="{{ path('cerrar_sesion') }}" class="icon brands fa-user-m"><span class="label">Medium</span>Cerrar Sesión Estudiante</a></li>
+        {% elseif app.session.get('admin') is defined and app.session.get('admin') == true %}
+            <li><a href="{{ path('cerrar_sesion') }}" class="icon brands fa-user-m"><span class="label">Medium</span>Cerrar Sesión Admin</a></li>
+        {% else %}
+            <li><a href="{{ path('login') }}" class="icon brands fa-user-m"><span class="label">Medium</span>Login</a></li>
+        {% endif %}        
+    </ul>
+</header>

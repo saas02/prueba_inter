@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+    <head>        
+        <head>
+            <link rel="icon" type="image/png" href="{{ absolute_url(asset('assets/images/favicon.png')) }}">
+            <title>{% block title %}Universidad Inter Rapidisimo{% endblock %}</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />            
+            <link rel="stylesheet" href="{{ absolute_url(asset('assets/css/main.css')) }}" />            
+            {% block stylesheets %}
+                {{ encore_entry_link_tags('app') }}
+            {% endblock %}
+	</head>
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    {% block body %} {% endblock %}
+    {% block javascripts %}        						
+        <script src="{{ absolute_url(asset('assets/js/jquery.min.js')) }}"></script>
+        <script src="{{ absolute_url(asset('assets/js/browser.min.js')) }}"></script>
+        <script src="{{ absolute_url(asset('assets/js/breakpoints.min.js')) }}"></script>        
+        <script src="{{ absolute_url(asset('assets/js/util.js')) }}"></script>
+        <script src="{{ absolute_url(asset('assets/js/main.js')) }}"></script>        
+        <script src="{{ absolute_url(asset('assets/js/functions.js')) }}"></script> 
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</body>
 </html>

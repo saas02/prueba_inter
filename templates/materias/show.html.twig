@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Materias{% endblock %}
+
+{% block body %}
+    <h1>Materias</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ materia.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ materia.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Is_active</th>
+                <td>{{ materia.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ materia.createdAt ? materia.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ materia.updatedAt ? materia.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('materias_index') }}">back to list</a>
+
+    <a href="{{ path('materias_edit', {'id': materia.id}) }}">edit</a>
+
+    {{ include('materias/_delete_form.html.twig') }}
+{% endblock %}

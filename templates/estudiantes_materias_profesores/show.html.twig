@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EstudiantesMateriasProfesores{% endblock %}
+
+{% block body %}
+    <h1>EstudiantesMateriasProfesores</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ estudiantes_materias_profesore.id }}</td>
+            </tr>
+            <tr>
+                <th>Id_estudiante</th>
+                <td>{{ estudiantes_materias_profesore.idEstudiante }}</td>
+            </tr>
+            <tr>
+                <th>Id_materia</th>
+                <td>{{ estudiantes_materias_profesore.idMateria }}</td>
+            </tr>
+            <tr>
+                <th>Id_profesor</th>
+                <td>{{ estudiantes_materias_profesore.idProfesor }}</td>
+            </tr>
+            <tr>
+                <th>Is_active</th>
+                <td>{{ estudiantes_materias_profesore.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ estudiantes_materias_profesore.createdAt ? estudiantes_materias_profesore.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ estudiantes_materias_profesore.updatedAt ? estudiantes_materias_profesore.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('estudiantes_materias_profesores_index') }}">back to list</a>
+
+    <a href="{{ path('estudiantes_materias_profesores_edit', {'id': estudiantes_materias_profesore.id}) }}">edit</a>
+
+    {{ include('estudiantes_materias_profesores/_delete_form.html.twig') }}
+{% endblock %}

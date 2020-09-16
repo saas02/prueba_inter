@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <body class="is-preload">
+        <!-- Wrapper -->
+        <div id="wrapper">
+            <!-- Main -->
+            <div id="main">
+                <div class="inner">
+                    {% include './index/header.html.twig' %}                    
+                    {% if app.session.get('nombre') is defined and app.session.get('nombre') is not empty %}
+                        <h3>Estudiante: {{ app.session.get('nombre') }}</h3>
+                    {% endif %}
+                    {% include './index/banner.html.twig' %}                    
+                </div>
+            </div>
+            {% if (app.session.get('admin') is defined and app.session.get('admin') == true) or (app.session.get('estudiante_session') is defined and app.session.get('estudiante_session') == true) or (app.session.get('profesor_session') is defined and app.session.get('profesor_session')) %}
+                {% include './index/sidebar.html.twig' %}
+            {% endif %}            
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">&copy; Todos Los derechos Reservados. Universidad Inter Rapidisimo.</p>
+        </footer>
+    </body>
+{% endblock %}

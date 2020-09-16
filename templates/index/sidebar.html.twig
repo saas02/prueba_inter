@@ -1,0 +1,39 @@
+<!-- Sidebar -->
+<div id="sidebar">
+    <div class="inner">
+
+        <!-- Search -->
+        <section id="search" class="alt">
+            <form method="post" action="#">
+                <input type="text" name="query" id="query" placeholder="Search" />
+            </form>
+        </section>
+
+        <!-- Menu -->
+        <nav id="menu">
+            <header class="major">
+                <h2>Menu</h2>
+            </header>
+            <ul>                
+                <li><a href="{{ path('index') }}">Homepage</a></li>                
+                {% if app.session.get('admin') is defined and app.session.get('admin') == true %}                                                    
+                    <li><a href="{{ path('materias_index') }}">Registrar Materias</a></li>
+                    <li><a href="{{ path('estudiantes_index') }}">Registrar Estudiantes</a></li>
+                    <li><a href="{{ path('profesores_index') }}">Registrar Profesores</a></li>                        
+                {% else %}
+                    <li>
+                        <span class="opener" data-name="ver_materias">Materias</span>
+                        <ul>    
+                            <li class="menu-button" data-info="{{app.session.get('data_session')}}" data-name="ver_materias" data-ruta="{{path('consulta_materias')}}">Ver Materias</li>
+                            {% if app.session.get('profesor_session') is defined and app.session.get('profesor_session') == true %}
+
+                            {% elseif app.session.get('estudiante_session') is defined and app.session.get('estudiante_session') == true %}                            
+                                <li class="menu-button" data-info="{{app.session.get('data_session')}}" data-name="registrar_materias" data-ruta="{{path('consulta_materias')}}">Registrar</li>                                
+                            {% endif %}
+                        </ul>
+                    </li>   
+                {% endif %}                                             
+            </ul>
+        </nav>
+    </div>
+</div>

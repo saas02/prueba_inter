@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EstudiantesMateriasProfesores index{% endblock %}
+
+{% block body %}
+    <h1>EstudiantesMateriasProfesores index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Id_estudiante</th>
+                <th>Id_materia</th>
+                <th>Id_profesor</th>
+                <th>Is_active</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for estudiantes_materias_profesore in estudiantes_materias_profesores %}
+            <tr>
+                <td>{{ estudiantes_materias_profesore.id }}</td>
+                <td>{{ estudiantes_materias_profesore.idEstudiante }}</td>
+                <td>{{ estudiantes_materias_profesore.idMateria }}</td>
+                <td>{{ estudiantes_materias_profesore.idProfesor }}</td>
+                <td>{{ estudiantes_materias_profesore.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ estudiantes_materias_profesore.createdAt ? estudiantes_materias_profesore.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ estudiantes_materias_profesore.updatedAt ? estudiantes_materias_profesore.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('estudiantes_materias_profesores_show', {'id': estudiantes_materias_profesore.id}) }}">show</a>
+                    <a href="{{ path('estudiantes_materias_profesores_edit', {'id': estudiantes_materias_profesore.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('estudiantes_materias_profesores_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Materias index{% endblock %}
+
+{% block body %}
+    <h1>Materias index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Is_active</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for materia in materias %}
+            <tr>
+                <td>{{ materia.id }}</td>
+                <td>{{ materia.nombre }}</td>
+                <td>{{ materia.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ materia.createdAt ? materia.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ materia.updatedAt ? materia.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('materias_show', {'id': materia.id}) }}">show</a>
+                    <a href="{{ path('materias_edit', {'id': materia.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('materias_new') }}">Create new</a>
+{% endblock %}
